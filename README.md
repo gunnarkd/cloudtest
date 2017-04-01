@@ -1,4 +1,4 @@
-Prerequisites: Computer ready for android-development
+Prerequisites: Computer ready for android-development and npm
 
 1. Install ionic
 ```sh

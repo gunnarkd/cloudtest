@@ -1,14 +1,58 @@
+<!--
+This is the email login page. It also contains a button for toggling registration.
+-->
 <ion-header>
+
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <ion-title>Login</ion-title>
   </ion-navbar>
+
 </ion-header>
 
+
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Epost</ion-label>
+      <ion-input [(ngModel)]="email" type="email" value="" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Passord</ion-label>
+      <ion-input [(ngModel)]="password"  type="password" value="" ></ion-input>
+    </ion-item>
+
+
+
+    <div *ngIf="signup">
+      <ion-item>
+        <ion-label floating>Fullt navn</ion-label>
+        <ion-input [(ngModel)]="name" type="text" value="" ></ion-input>
+      </ion-item>
+
+    </div>
+
+    <div padding height="80px">
+    </div>
+
+
+    <div *ngIf="!signup">
+      <button ion-button full (click)="login()" >Logg inn</button>
+      <p align="center"> Eller </p>
+
+
+      <button ion-button full clear (click)="toggleRegister()">Opprett ny bruker</button>
+    </div>
+
+  </ion-list>
+
+  <div *ngIf="signup">
+    <button ion-button full (click)="register()">Opprett bruker</button>
+
+
+    <button ion-button full clear (click)="toggleRegister()">Avbryt</button>
+
+  </div>
+
 </ion-content>

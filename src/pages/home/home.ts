@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 
 import { Auth, User, AuthLoginOptions } from '@ionic/cloud-angular';
 
@@ -34,11 +34,14 @@ export class HomePage {
     .toPromise()
     .then(()=>{
       //Når promises lykkes blir this.user oppdatert med dataene fra innloggingen
+      alert('Login suksess:\n\n'+JSON.stringify(this.user.details)+'\n\n'+JSON.stringify(this.user.data));
+
       console.log('Login ok');
       console.log('Her ligger external_id: '+JSON.stringify(this.user.details));
       console.log('Her ligger custom dataene: '+JSON.stringify(this.user.data));
     })
     .catch((err)=>{
+      alert('Login timed out');
       console.log('Login timed out');
     })
 
@@ -51,11 +54,15 @@ export class HomePage {
     .timeout(10000)
     .toPromise()
     .then((data)=>{
+
+      alert('Register suksess:\n\n'+JSON.stringify(this.user.details)+'\n\n'+JSON.stringify(this.user.data));
+
       console.log('Register ok');
       console.log('Her ligger external_id: '+JSON.stringify(this.user.details));
       console.log('Her ligger custom dataene: '+JSON.stringify(this.user.data));
     })
     .catch((err)=>{
+      alert('Register timed out');
       console.log('Register timed out');
     })
   }
